@@ -23,8 +23,8 @@ Anyway, this technique is working pretty well for me on several sites. It suppor
 
 
 NOTE: if you are adding to an existing site, you may want to look through the fields I've added to the event.html template and add them to your existing event.html template. The fields you may need are:
-<perch:events id="show_date_range" type="radio" label="Date Range" options="Show date range, Don’t show, This is an all day event (don't show time)" default="Don’t show" />
-<perch:events id="dtend" type="date" label="End Date" format="c" time="false" help="Optional. Only used if ‘Show date range’ or ‘This is an all day event’ are selected. Displayed as: ‘Date through End Date’" />
-<perch:events id="program_duration" label="Duration" encode="false" suppress="true" size="s" help="Optional. ie: ‘Enter the length of the event in hours (ie 6.5 for an event that starts at 8:30 and goes to 3pm." />
+`<perch:events id="show_date_range" type="radio" label="Date Range" options="Show date range, Don’t show, This is an all day event (don't show time)" default="Don’t show" />`
+`<perch:events id="dtend" type="date" label="End Date" format="c" time="false" help="Optional. Only used if ‘Show date range’ or ‘This is an all day event’ are selected. Displayed as: ‘Date through End Date’" />`
+`<perch:events id="program_duration" label="Duration" encode="false" suppress="true" size="s" help="Optional. ie: ‘Enter the length of the event in hours (ie 6.5 for an event that starts at 8:30 and goes to 3pm." />`
 
 Good luck! Monty

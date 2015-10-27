@@ -1,0 +1,11 @@
+<perch:events id="show_date_range" type="radio" label="Date Range" options="Show date range, Don’t show, This is an all day event (don't show time)" default="Don’t show" />
+<perch:events id="dtend" type="date" label="End Date" format="c" time="false" help="Optional. Only used if ‘Show date range’ or ‘This is an all day event’ are selected. Displayed as: ‘Date through End Date’" /><perch:if exists="program_duration"><perch:events id="program_duration" label="Duration" encode="false" suppress="true" size="s" help="Optional. ie: ‘Enter the length of the event in hours (ie 6.5 for an event that starts at 8:30 and goes to 3pm." /></perch:if>    <perch:events id="eventDescHTML" encode="false" editor="redactor" />
+<perch:if exists="image">
+<img src="<perch:events id="image" type="image" label="Image" width="240" crop="true" />" alt="<perch:events id="eventTitle" />" /><perch:events id="image" type="image" label="Image" width="100" height="100" crop="true" />
+<perch:events id="image" type="image" label="Image" width="496" crop="false" />
+<perch:events id="image" type="image" label="Image" width="458" height="250" crop="true" />
+</perch:if>
+<perch:if exists="cost"><p class="cost">Cost: <perch:events id="cost" type="textarea" label="Cost" html="false" size="xs" divider-before="Registration and cost info" /></p></perch:if>
+<perch:if exists="registration"><p class="registration">Registration: <perch:events id="registration" type="textarea" label="Registration" html="false" size="xs" /></p></perch:if>
+<a href="<perch:events id="registrationlink" type="text" label="Registration Link" required="false" html="false" help="Add a link for registration (optional)" />" <perch:if id="linknewwindow" match="eq" value="_blank" target="<perch:events id="linknewwindow" type="checkbox" label="Open registration link in new window." value="_blank" />" </perch:if>>Register here</a>
+<perch:events id="show_on_calendar" type="radio" label="Show on Calendar?" options="yes, no" default="yes" divider-before="Publish?"/>

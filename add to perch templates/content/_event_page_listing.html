@@ -1,0 +1,27 @@
+<section id="events" class="clear">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+			<perch:if exists="image">
+			<img src="<perch:content id="image" type="image" label="Image" width="240" crop="true" />" alt="<perch:content id="eventTitle" />" />
+			</perch:if>
+		<div class="heading" >
+			<h1><perch:content id="eventTitle" /></h1>
+			<h2 class="event-list-date"><perch:content id="eventDateTime" format="l, F j, Y, g:i a" /><perch:if exists="program_duration"> to <perch:content id="endtime" label="Duration" encode="false" suppress="false" /></perch:if><perch:if id="show_date_range" value="Show Date Range"> through <perch:content id="dtend" type="date" format="l, F j, Y" /></perch:if></h2>
+			<perch:if exists="cost">
+	    	<p>Registration:</strong> <perch:content id="cost" label="Cost" encode="false" /></p></perch:if>
+			<perch:content id="eventDescHTML" encode="false" />
+			<perch:if exists="registrationlink">
+			<a type="button" href="<perch:content id="registrationlink" encode="false"  />" <perch:if id="linknewwindow" match="eq" value="_blank"> target="<perch:content id="linknewwindow" type="checkbox" label="Open registration link in new window." value="_blank" />" </perch:if>  />
+	    	Registration
+			</a>
+			</perch:if>
+			</div>
+		</div><!-- row end -->
+	</div><!-- container end -->
+</section>
+
+
+
+
+

@@ -1,0 +1,27 @@
+<perch:help>
+Recurring events are edited here. For non-repeating events, use the Perch Events app.
+</perch:help>
+<h1><perch:content id="eventtitle" type="text" label="Event Title" required="true" html="false" title="true" />
+</h1>
+<perch:content id="recurringeventimage" type="image" label="Event Image" crop="false" width="540" height=""/>
+<perch:content id="recurringeventimage" type="image" label="Event Image" crop="true" width="100" height="100"/>
+
+<p><perch:content id="description" type="textarea" label="Description" required="false" html="false" size="xs"/></p>
+<perch:content id="startingondate" type="date" label="Beginning" format="m-d-Y" time="false" suppress="true" notes-before="Enter the date range for the repeating event" divider-before="Event appears between:"/>
+<perch:content id="endingondate" type="date" label="Ending" format="m-d-Y" time="false" suppress="true"/>
+<perch:content id="start_time" label="Starts at" type="time" format="g:i a" divider-before="Start and end times"/>
+<perch:content id="end_time" type="time"  label="Ends at" format="g:i a"/>
+<perch:content id="all_day" type="checkbox" label="All day event" value="allday" suppress="true" help="Select for either all day events. Start and end times will be ignored." />
+<perch:content id="mondays" type="checkbox" label="Monday" notes-before="Select the days of the week for this event" value="monday" suppress="true" />
+<perch:content id="tuesdays" type="checkbox" label="Tuesday" value="tuesday" suppress="true" />
+<perch:content id="wednesdays" type="checkbox" label="Wednesday" value="wednesday" suppress="true" />
+<perch:content id="thursdays" type="checkbox" label="Thursday" value="thursday" suppress="true" />
+<perch:content id="fridays" type="checkbox" label="Friday" value="friday" suppress="true" />
+<perch:content id="saturdays" type="checkbox" label="Saturday" value="saturday" suppress="true" />
+<perch:content id="sundays" type="checkbox" label="Sunday" value="sunday" suppress="true" />
+<perch:if exists="cost"><p class="cost">Cost: <perch:content id="cost" type="textarea" label="Cost" html="false" size="xs" divider-before="Registration and cost info" /></p></perch:if>
+
+<perch:if exists="registration"><p class="registration">Registration: <perch:content id="registration" type="textarea" label="Registration" html="false" size="xs" /></p></perch:if>
+<perch:content id="slug" type="slug" for="eventtitle" />
+<a href="<perch:content id="registrationlink" type="text" label="Registration Link" required="false" html="false" help="Add a link for registration (optional)" />" <perch:if id="linknewwindow" match="eq" value="_blank" target="<perch:content id="linknewwindow" type="checkbox" label="Open registration link in new window." value="_blank" />" </perch:if>>Register here</a>
+<perch:content id="show_on_calendar" type="radio" label="Show on Calendar?" options="yes, no" default="yes" divider-before="Publish?"/>

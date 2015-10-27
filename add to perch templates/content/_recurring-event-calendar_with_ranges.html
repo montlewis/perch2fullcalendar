@@ -1,0 +1,17 @@
+<perch:before>var repeatingEvents = [
+</perch:before>
+<perch:if id="show_on_calendar" match="eq" value="yes">				{
+					title: '<perch:content id="eventtitle" replace="’|,'|,@|at,&|and,’|,”|,“|,‘|"/>',
+					<perch:if exists="all_day">
+					allDay: 'true',<perch:else />
+					start: '<perch:content id="start_time" format="G:i"  />',
+					end: '<perch:content id="end_time" format="G:i" />',</perch:if>
+					url: '/event.php?r=<perch:content id="slug" type="slug" for="eventtitle" />',
+					tooltip: '<perch:content id="eventtitle" replace="’|,'|,@|at,&|and,’|,”|,“|,‘|"/>.<perch:if exists="age">\nAges: <perch:content id="age" type="text" label="Age" required="true" html="false" /></perch:if><perch:if exists="cost">\nCost: <perch:content id="cost" type="textarea" label="Cost" html="false" size="xs" /></perch:if>\nClick for more information.',
+					dow: [ <perch:if exists="mondays">1, </perch:if><perch:if exists="tuesdays">2, </perch:if><perch:if exists="wednesdays">3, </perch:if><perch:if exists="thursdays">4, </perch:if><perch:if exists="fridays">5, </perch:if><perch:if exists="saturdays">6, </perch:if><perch:if exists="sundays">0</perch:if> ], // Repeat monday and thursday
+					ranges:[{start:"<perch:content id="startingondate" type="date" label="Starting on" format="Y-m-d" time="false" suppress="false" divider-before="Event repeats on:"/>", end:"<perch:content id="endingondate" type="date" label="Starting on" format="Y-m-d" time="false" suppress="false" divider-before="Event repeats on:"/>"},],
+
+				},
+</perch:if><perch:after>
+ ];
+</perch:after>

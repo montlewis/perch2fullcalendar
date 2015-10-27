@@ -23,7 +23,7 @@ $(document).ready(function() {
 			$opts = array ('filter'=>'EventDateTime', 'match'=>'gt','value'=>'2015-05-14','skip-template'=>'true');
 			$varray1 = perch_events_custom($opts);
 			foreach ($varray1 as $key1 => $value1){
-		   	if ($varray1[$key1]['show_date_range'] != "Show Date Range") {
+		   	if ($varray1[$key1]['show_date_range'] != "Show date range") {
 			$start = $varray1[$key1]['eventDateTime'];
 			$duration='';
 			$duration = $varray1[$key1]['program_duration'];

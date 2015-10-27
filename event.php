@@ -15,7 +15,7 @@
 	    	$duration = $eventarray[0]['program_duration'];
 	    	$duration_hour = floor($duration);
 			$duration_minute = round(60*($duration-$duration_hour));
-	    	$tz = new DateTimeZone('America/New_York');
+	    	$tz = new DateTimeZone(PERCH_TZ);
 			$date = new DateTime($start, $tz);
 	    	$date->modify('+'.$duration_hour.' hours +'.$duration_minute.' minutes');
 			$endtime = $date->format('g:i a');

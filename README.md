@@ -17,7 +17,9 @@ Add some events to the Perch Events app.
 
 Revisit the /calendar.php page and you should see both your recurring events and your Perch Events app events sharing the same calendar space.
 
-This implementation is intended to get you started and not a complete solution... For instance, you'll see that I have hardcoded the time zone to be New York...
+This implementation is intended to get you started and not a complete solution... 
+
+Timezone should be defined in /perch/config/config.php ie: `define('PERCH_TZ', 'Amarica/New York');`
 
 Anyway, this technique is working pretty well for me on several sites. It supports recurring events within a date range (as long as the recurrance is by weekday in this instance) start and end times, and multi-day events.
 

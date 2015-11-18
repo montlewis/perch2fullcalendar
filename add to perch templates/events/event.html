@@ -8,11 +8,12 @@
 
 
 <perch:events id="time_range" type="checkbox" label="Show Time" value="1" suppress="true" />
-<perch:events id="date_range" type="checkbox" label="Show Date Range" value="1" suppress="true" divider-before="End Date?" />
+<perch:if exists="program_duration"><perch:events id="program_duration" label="Duration" encode="false" suppress="true" size="xs" help="Optional. ie: ‘Enter the length of the event in hours (ie 6.5 for an event that starts at 8:30 and goes to 3pm." /></perch:if>
+<perch:events id="date_range" type="checkbox" label="Show Date Range" value="1" suppress="true" divider-before="End date?" notes-before="Use these fields when your event spans concurrent days. For recurring events, use the form on the calendar page in the pages app." />
 
-<perch:events id="dtend" type="date" label="End Date" format="c" time="false" help="Optional. Only used if ‘Show date range’ or ‘This is an all day event’ are selected. Displayed as: ‘Date through End Date’" /><perch:if exists="program_duration"><perch:events id="program_duration" label="Duration" encode="false" suppress="true" size="s" help="Optional. ie: ‘Enter the length of the event in hours (ie 6.5 for an event that starts at 8:30 and goes to 3pm." /></perch:if>    <perch:events id="eventDescHTML" encode="false" editor="redactor" />
+<perch:events id="dtend" type="date" label="End Date" format="c" time="false" help="Optional. Only used if ‘Show date range’ is selected. Displayed as: ‘Date through End Date’" />    <perch:events id="eventDescHTML" encode="false" editor="redactor" />
 <perch:if exists="image">
-<img src="<perch:events id="image" type="image" label="Image" width="240" crop="true" />" alt="<perch:events id="eventTitle" />" /><perch:events id="image" type="image" label="Image" width="100" height="100" crop="true" />
+<img src="<perch:events id="image" type="image" label="Image" width="240" crop="true" divider-before="Event image"/>" alt="<perch:events id="eventTitle" />" /><perch:events id="image" type="image" label="Image" width="100" height="100" crop="true" />
 <perch:events id="image" type="image" label="Image" width="496" crop="false" />
 <perch:events id="image" type="image" label="Image" width="458" height="250" crop="true" />
 </perch:if>

@@ -3,7 +3,10 @@
 <perch:if id="show_on_calendar" match="eq" value="yes">				{
 					title: '<perch:content id="eventtitle" replace="’|,'|,@|at,&|and,’|,”|,“|,‘|"/>',
 					<perch:if exists="all_day">
-					allDay: 'true',<perch:else />
+					start: '0:00',
+					end:'1:00',
+					allDay:true,<perch:else />
+					allDay:false,
 					start: '<perch:content id="start_time" format="G:i"  />',
 					end: '<perch:content id="end_time" format="G:i" />',</perch:if>
 					url: '/event.php?r=<perch:content id="slug" type="slug" for="eventtitle" />',
@@ -12,6 +15,3 @@
 					ranges:[{start:"<perch:content id="startingondate" type="date" label="Starting on" format="Y-m-d" time="false" suppress="false" divider-before="Event repeats on:"/>", end:"<perch:content id="endingondate" type="date" label="Starting on" format="Y-m-d" time="false" suppress="false" divider-before="Event repeats on:"/>"},],
 
 				},
-</perch:if><perch:after>
- ];
-</perch:after>

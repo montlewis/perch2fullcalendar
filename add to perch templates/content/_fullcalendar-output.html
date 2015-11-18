@@ -1,12 +1,16 @@
 <perch:before>		{	events: [
-</perch:before>				{
+</perch:before>		<perch:if exists="date_range AND time_range"><perch:else />{
 					id: '<perch:content id="eventID"/>',
 					title: '<perch:content id="eventTitle" replace="’|,'|,@|at,’|,”|,“|,‘|"/>',
 					start: '<perch:content id="eventDateTime" format="c"  />',
-					<perch:if id="allday" match="eq" value="true">end: '<perch:content id="dtend" />T06:00:00'<perch:else /><perch:if exists="program_duration">end: '<perch:content id="endtime" />'<perch:else />duration: '2'</perch:if></perch:if>,
+					<perch:if id="allday" match="eq" value="true">
+					allDay:true,</perch:if>
+					<perch:if id="allday" match="eq" value="true">
+end: '<perch:content id="dtend" />T06:00:00'<perch:else /><perch:if exists="program_duration">end: '<perch:content id="endtime" />'<perch:else />duration: '1'</perch:if></perch:if>,
 					url: '/event.php?s=<perch:content id="eventSlug" />',
-					tooltip: '<perch:content id="eventTitle" replace="’|,'|,@|at,’|,”|,“|,‘|"/>.<perch:if exists="audience">\nAudience: <perch:content id="audience"  replace="’|,'|,@|at,’|,”|,“|,‘|" /></perch:if> \nClick for more information.'
-				}<perch:if exists="perch_item_last"><perch:else />,</perch:if>
+					tooltip: '<perch:content id="eventTitle" replace="’|,'|,@|at,’|,”|,“|,‘|"/>.<perch:if exists="audience">\nAudience: <perch:content id="audience"  replace="’|,'|,@|at,’|,”|,“|,‘|" /></perch:if> \nClick for more information.',
+					className:'<perch:content id="categorySlug" />'
+				}<perch:if exists="perch_item_last"><perch:else />,</perch:if></perch:if>
 
 <perch:after>			], className:'event'
  }

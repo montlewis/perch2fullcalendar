@@ -4,7 +4,28 @@
 <script>
 $(document).ready(function() {
 	<?php 	$opts = array('template'=>'_recurring-event-calendar_with_ranges.html'); 
-		perch_content_custom('Recurring Events', $opts);
+			perch_content_custom('Recurring Events', $opts);
+			$opts = array ('skip-template'=>'true');
+			$varrayre = perch_events_custom($opts);
+			foreach ($varrayre as $key1 => $value1){
+		   	
+			$start = $varrayre[$key1]['eventDateTime'];
+			$duration='';
+			$duration = $varrayre[$key1]['program_duration'];
+			$duration_hour = floor($duration);
+			$duration_minute = round(60*($duration-$duration_hour));
+			$tz = new DateTimeZone(PERCH_TZ);
+			$date = new DateTime($start, $tz);
+			$date->modify('+'.$duration_hour.' hours +'.$duration_minute.' minutes');
+			$endtime = $date->format('c');
+			$varrayre[$key1]['endtime'] = $endtime; 		
+			
+			$varrayre[$key1]['allday'] = 'false'; 			
+
+			};
+			perch_template('content/_fullcalendar-output-multiday.html', $varrayre);
+
+	
 	?>
 	$('#calendar').fullCalendar({
 		aspectRatio: 1.5,
@@ -18,34 +39,37 @@ $(document).ready(function() {
 		editable: false,
 		minTime: "8:30:00",
 		maxTime: "23:00:00",
+		allDaySlot:true,
 		eventSources: [  
 		<?php
-			$opts = array ('filter'=>'EventDateTime', 'match'=>'gt','value'=>'2015-05-14','skip-template'=>'true');
+			$opts = array ('skip-template'=>'true');
 			$varray1 = perch_events_custom($opts);
 			foreach ($varray1 as $key1 => $value1){
-		   	if ($varray1[$key1]['show_date_range'] != "Show date range") {
+		   	
 			$start = $varray1[$key1]['eventDateTime'];
 			$duration='';
 			$duration = $varray1[$key1]['program_duration'];
 			$duration_hour = floor($duration);
 			$duration_minute = round(60*($duration-$duration_hour));
-			$tz = new DateTimeZone('America/New_York');
+			$tz = new DateTimeZone(PERCH_TZ);
 			$date = new DateTime($start, $tz);
 			$date->modify('+'.$duration_hour.' hours +'.$duration_minute.' minutes');
 			$endtime = $date->format('c');
-			$varray1[$key1]['endtime'] = $endtime; 
-			$varray1[$key1]['allday'] = 'false'; 
-			} else {
+			$varray1[$key1]['endtime'] = $endtime; 		
+			
+			if ($varray1[$key1]['time_range'] != "1") {
 			$varray1[$key1]['allday'] = 'true'; 
+			
+			} else {
+				$varray1[$key1]['allday'] = 'false'; 			
 			};
 			};
-		// 	print_r($varray1);
 			perch_template('content/_fullcalendar-output.html', $varray1);
 		?>
 , 
             {
 				events: repeatingEvents,
-				    className:'recur' 
+				    className:'recur'
 				    }],
 				
 				   eventRender: function(event, element) {
@@ -55,6 +79,7 @@ $(document).ready(function() {
 				     {
 				      if (event.start.isAfter(moment(event.ranges[i].start, "YYYY/MM/DD")) && event.end.isBefore(moment(event.ranges[i].end, "YYYY/MM/DD")))
 				      {
+					   element.attr('title', event.tooltip);
 				          return true;
 				      }
 				     }
@@ -64,4 +89,8 @@ $(document).ready(function() {
 				});
 			});
 </script>
+<?php
+// 			 	print_r($varray1);
+
+	?>
 <?php perch_get_javascript(); ?>

@@ -8,10 +8,11 @@
 					allDay: false,
 					start: '<perch:content id="eventDateTime" format="G:i"  />',
 					end: '<perch:content id="endtime" format="G:i" />',</perch:if>
-					url: '/event.php?r=<perch:content id="slug" type="slug" for="eventtitle" />',
+					url: '/event.php?s=<perch:content id="eventSlug" />',
 					tooltip: '<perch:content id="eventTitle" replace="’|,'|,@|at,&|and,’|,”|,“|,‘|"/>.<perch:if exists="age">\nAges: <perch:content id="age" type="text" label="Age" required="true" html="false" /></perch:if><perch:if exists="cost">\nCost: <perch:content id="cost" type="textarea" label="Cost" html="false" size="xs" /></perch:if>\nClick for more information.',
 					dow: [0,1,2,3,4,5,6],
 					ranges:[{start:"<perch:content id="eventDateTime" type="date" label="Starting on" format="Y-m-d" time="false" suppress="false" divider-before="Event repeats on:"/>", end:"<perch:content id="dtend" type="date" format="Y-m-d" time="false" suppress="false" />"},],
+					className:'<perch:content id="category_slugs" />'
 
 				},
 </perch:if></perch:if><perch:after>

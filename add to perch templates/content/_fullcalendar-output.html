@@ -9,7 +9,7 @@
 end: '<perch:content id="dtend" />T06:00:00'<perch:else /><perch:if exists="program_duration">end: '<perch:content id="endtime" />'<perch:else />duration: '1'</perch:if></perch:if>,
 					url: '/event.php?s=<perch:content id="eventSlug" />',
 					tooltip: '<perch:content id="eventTitle" replace="’|,'|,@|at,’|,”|,“|,‘|"/>.<perch:if exists="audience">\nAudience: <perch:content id="audience"  replace="’|,'|,@|at,’|,”|,“|,‘|" /></perch:if> \nClick for more information.',
-					className:'<perch:content id="categorySlug" />'
+					className:'<perch:content id="category_slugs" />'
 				}<perch:if exists="perch_item_last"><perch:else />,</perch:if></perch:if>
 
 <perch:after>			], className:'event'

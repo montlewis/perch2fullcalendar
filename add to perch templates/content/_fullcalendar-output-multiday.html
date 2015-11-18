@@ -1,5 +1,5 @@
 
-<perch:if id="show_on_calendar" match="eq" value="yes"><perch:if exists="date_range AND time_range">{
+<perch:if exists="date_range AND time_range">{
 					title: '<perch:content id="eventTitle" replace="’|,'|,@|at,&|and,’|,”|,“|,‘|"/>',
 					<perch:if exists="allday">
 					start: '<perch:content id="eventDateTime" format="G:i"  />',
@@ -15,6 +15,6 @@
 					className:'<perch:content id="category_slugs" />'
 
 				},
-</perch:if></perch:if><perch:after>
+</perch:if><perch:after>
  ];
 </perch:after>
